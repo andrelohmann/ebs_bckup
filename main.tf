@@ -31,7 +31,7 @@ data "template_file" "vars" {
 
 
 resource "null_resource" "buildlambdazip" {
-  triggers { key = "${uuid()}" }
+  triggers = { key = "${uuid()}" }
   provisioner "local-exec" {
     command = <<EOF
     mkdir -p ${path.module}/lambda && mkdir -p ${path.module}/tmp
