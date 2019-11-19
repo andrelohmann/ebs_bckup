@@ -22,7 +22,7 @@ resource "aws_iam_role_policy" "ebs_bckup-role-lambdapolicy" {
 
 data "template_file" "vars" {
     template = "${file("${path.module}/files/vars.ini.template")}"
-    vars {
+    vars = {
       EC2_INSTANCE_TAG                   = "${var.EC2_INSTANCE_TAG}"
       RETENTION_DAYS                     = "${var.RETENTION_DAYS}"
       REGIONS                            = "${join(",", var.regions)}"
